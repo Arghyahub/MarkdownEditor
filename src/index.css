@@ -1,0 +1,30 @@
+html , body , #root{
+  border: 0;
+  margin: 0;
+  height: 100%;
+}
+
+.hi-100 {
+  height: 100%;
+}
+.wi-100 {
+  width: 100%;
+}
+.bor-r {
+  border: 2px solid red;
+}
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.flex-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.flex-0 {
+  flex: 1;
+}

@@ -1,0 +1,19 @@
+#App {
+    display: flex;
+    flex-direction: column;
+}
+
+.code-width {
+    width: 50%;
+}
+
+#code-block {
+    display: flex;
+    flex-direction: row;
+}
+
+.mark-block {
+    background-color: black;
+    color: white;
+    padding: 1rem;
+}
