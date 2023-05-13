@@ -1,6 +1,7 @@
 #App {
     display: flex;
     flex-direction: column;
+    font-family: 'Prompt', sans-serif;
 }
 
 .code-width {
@@ -12,8 +13,13 @@
     flex-direction: row;
 }
 
+.code-text {
+    padding: 1rem;
+    font-size: 1.1rem;
+}
+
 .mark-block {
-    background-color: black;
-    color: white;
+    background-color: #0d1117;
+    color: #E6EDF3;
     padding: 1rem;
 }
