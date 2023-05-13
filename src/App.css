@@ -11,6 +11,7 @@
 #code-block {
     display: flex;
     flex-direction: row;
+    height: calc(100% - 50px - 2rem);
 }
 
 .code-text {
@@ -22,4 +23,5 @@
     background-color: #0d1117;
     color: #E6EDF3;
     padding: 1rem;
+    overflow: auto;
 }

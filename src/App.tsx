@@ -16,7 +16,7 @@ function App(): JSX.Element {
       <div id="nav" className='flex-row bor-r'>Markdown Editor</div>
       <div id="options" className='wi-100'>Something</div>
 
-      <div id="code-block" className="flex-0 wi-100 bor-r">
+      <div id="code-block" className="wi-100 bor-r">
         <textarea ref={textState} placeholder='Write Here' className='code-width hi-100 code-text' onChange={(e) => setMark(e.target.value)}></textarea>
         <ReactMarkdown
           remarkPlugins={[gfm]} // Enable GitHub Flavored Markdown (GFM) syntax
