@@ -12,12 +12,12 @@
 #code-block {
     display: flex;
     flex-direction: row;
-    height: calc(100% - 50px - 2rem);
+    height: calc(100% - 2.1rem);
 }
 
 .code-text {
     padding: 1rem;
-    font-size: 1.1rem;
+    font-size: 1rem;
 }
 
 .mark-block {
@@ -37,4 +37,8 @@ h1 , h2 , h3 , h4 , h5 , h6 {
 
 button {
     cursor: pointer;
+}
+
+.coverbox {
+    overflow: auto;
 }
