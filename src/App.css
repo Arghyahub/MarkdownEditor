@@ -1,3 +1,4 @@
+@import 'github-markdown-css/github-markdown.css';
 #App {
     display: flex;
     flex-direction: column;
@@ -24,4 +25,16 @@
     color: #E6EDF3;
     padding: 1rem;
     overflow: auto;
+}
+
+strong {
+    font-weight: 700 !important;
+}
+
+h1 , h2 , h3 , h4 , h5 , h6 {
+    border-bottom: 4px solid #21262d !important;
+}
+
+button {
+    cursor: pointer;
 }
