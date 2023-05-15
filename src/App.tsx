@@ -2,6 +2,9 @@ import { useState , useEffect , useRef } from 'react'
 import ReactMarkdown from 'react-markdown';
 import gfm from 'remark-gfm';
 import 'github-markdown-css/github-markdown.css';
+import rehypeRaw from "rehype-raw";
+
+
 import './App.css'
 
 interface refobj {
@@ -259,10 +262,10 @@ function App(): JSX.Element {
           <textarea ref={textState} placeholder='Write Here' className='code-width hi-100 code-text' onChange={(e) => setMark(e.target.value)}></textarea>
           <ReactMarkdown
             remarkPlugins={[gfm]} // Enable GitHub Flavored Markdown (GFM) syntax
+            rehypePlugins={[rehypeRaw]}
             className="markdown-body code-width hi-100 mark-block" // Apply GitHub Markdown CSS styles
-            >
-            {Mark}
-          </ReactMarkdown>
+            children={Mark}
+            />
         </div>
 
       </div>
