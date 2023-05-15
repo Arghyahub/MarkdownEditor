@@ -225,6 +225,16 @@ function App(): JSX.Element {
     setMark(newStr) ;
   }
 
+  const TABLE = ():void => {
+    const textar:HTMLTextAreaElement = textState.current;
+    const start:number = textar.selectionStart ;
+    const str:string = textar.value ;
+
+    const newStr = `${str.slice(0,start)}\n[comment]: <> (The distance between | and | doesn't matters)\n\n| HEAD1 | HEAD2 | HEAD3 |\n|    -  |    -  |    -  |\n| BODY  | BODY  | BODY  |\n|       |       |       |\n\n${str.slice(start)}` ;
+    textar.value = newStr ;
+    setMark(newStr) ;
+  }
+
   return (
     <div id="App" className='hi-100'>
       <div id="nav" className='flex-row bor-r'>Markdown Editor</div>
@@ -240,6 +250,7 @@ function App(): JSX.Element {
       <button className="btn" onClick={LINK}>L</button>
       <button className="btn" onClick={IMAGE}>I</button>
       <button className="btn" onClick={CHECK}>CH</button>
+      <button className="btn" onClick={TABLE}>T</button>
       </div>
 
       <div className="wi-100 flex-1 coverbox">
