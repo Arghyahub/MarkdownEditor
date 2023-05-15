@@ -191,6 +191,40 @@ function App(): JSX.Element {
     textar.focus() ;
   }
 
+  const IMAGE = ():void => {
+    const textar:HTMLTextAreaElement = textState.current;
+    const start:number = textar.selectionStart ;
+    const end:number = textar.selectionEnd ;
+    const str:string = textar.value ;
+
+    if (start===end){
+      const newStr:string = str.slice(0,start) + "![Title](https://loremflickr.com/640/360) " + str.slice(end) ;
+      textar.value = newStr ;
+      setMark(newStr) ;
+      textar.selectionStart = start + 9;
+      textar.selectionEnd = start + 40 ;
+      textar.focus() ;
+      return;
+    }
+
+    const newStr:string = str.slice(0,start) + "![" + str.slice(start,end) + "](https://loremflickr.com/640/360)" + str.slice(end) ;
+    textar.value = newStr ;
+    setMark(newStr) ;
+    textar.selectionStart = end + 4;
+    textar.selectionEnd = end + 35 ;
+    textar.focus() ;
+  }
+
+  const CHECK = ():void => {
+    const textar:HTMLTextAreaElement = textState.current;
+    const start:number = textar.selectionStart ;
+    const str:string = textar.value ;
+
+    const newStr = `${str.slice(0,start)}\n- [x] Task1 \n- [ ] Task2 \n- [ ] Task3 \n\n${str.slice(start)}` ;
+    textar.value = newStr ;
+    setMark(newStr) ;
+  }
+
   return (
     <div id="App" className='hi-100'>
       <div id="nav" className='flex-row bor-r'>Markdown Editor</div>
@@ -204,6 +238,8 @@ function App(): JSX.Element {
       <button className="btn" onClick={QUOTE}>Q</button>
       <button className="btn" onClick={CODE}>C</button>
       <button className="btn" onClick={LINK}>L</button>
+      <button className="btn" onClick={IMAGE}>I</button>
+      <button className="btn" onClick={CHECK}>CH</button>
       </div>
 
       <div className="wi-100 flex-1 coverbox">
