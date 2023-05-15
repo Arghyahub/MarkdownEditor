@@ -167,6 +167,30 @@ function App(): JSX.Element {
     setMark(newStr) ;
   }
 
+  const LINK = ():void => {
+    const textar:HTMLTextAreaElement = textState.current;
+    const start:number = textar.selectionStart ;
+    const end:number = textar.selectionEnd ;
+    const str:string = textar.value ;
+
+    if (start===end){
+      const newStr:string = str.slice(0,start) + "[TEXT](https://www.lipsum.com/) " + str.slice(end) ;
+      textar.value = newStr ;
+      setMark(newStr) ;
+      textar.selectionStart = start + 7;
+      textar.selectionEnd = start + 30 ;
+      textar.focus() ;
+      return;
+    }
+
+    const newStr:string = str.slice(0,start) + "[" + str.slice(start,end) + "](https://www.lipsum.com/)" + str.slice(end) ;
+    textar.value = newStr ;
+    setMark(newStr) ;
+    textar.selectionStart = end + 3;
+    textar.selectionEnd = end + 26 ;
+    textar.focus() ;
+  }
+
   return (
     <div id="App" className='hi-100'>
       <div id="nav" className='flex-row bor-r'>Markdown Editor</div>
@@ -179,6 +203,7 @@ function App(): JSX.Element {
       <button className="btn" onClick={STRIKE}>S</button>
       <button className="btn" onClick={QUOTE}>Q</button>
       <button className="btn" onClick={CODE}>C</button>
+      <button className="btn" onClick={LINK}>L</button>
       </div>
 
       <div className="wi-100 flex-1 coverbox">
