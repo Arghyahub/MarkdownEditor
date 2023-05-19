@@ -24,7 +24,7 @@
 .mark-block {
     background-color: #0d1117;
     color: #E6EDF3;
-    padding: 1rem;
+    padding: calc(1rem + 0.5px);
     overflow: auto;
 }
 
@@ -44,12 +44,40 @@ button {
     overflow: auto;
 }
 
+
+.btn-img {
+    height: 20px;
+    width: 20px;
+}
+
+#options {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
 .btn {
     font-weight: 700;
     font-family: 'Merriweather', serif;
+    position: relative;
+    margin: 0.3rem 0.2rem 0 0.2rem;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+.what {
+    position: absolute;
+    top: -15px;
+    left: 0;
+    font-weight: 100;
+    color: rgb(60, 60, 60) ;
+    display: none;
+    white-space: nowrap;
 }
 
-.btn-img {
-    height: 13px;
-    width: 13px;
+.btn:hover .what {
+    display: block;
 }
