@@ -18,10 +18,24 @@ function App(): JSX.Element {
     setMark(textState.current.value) ;
   }, [])
 
+  const Copy = () => {
+    const val:string = textState.current.value;
+    console.log(val) ;
+    const input = document.createElement('textarea');
+    input.value = val ;
+    document.body.appendChild(input);
+    input.select();
+    document.execCommand('copy');
+    document.body.removeChild(input);
+  }
 
   return (
     <div id="App" className='hi-100'>
-      <div id="nav" className='flex-row bor-r'>Markdown Editor</div>
+      <div id="nav" className='flex-row bor-r'>
+        Markdown Editor 
+        <a href="https://github.com/Arghyahub/MarkdownEditor" className="github-src"><img src="github.png" alt="Github" className='github-icon' /> </a> 
+      </div>
+
       <div id="options" className='wi-100'>
       <button className="btn" onClick={():void => BOLD(textState.current,setMark)}>B <div className="what">Bold</div></button>
       <button className="btn" onClick={() => ITALIC(textState.current,setMark)}><i>I</i> <div className="what">Italic</div></button>
@@ -46,7 +60,8 @@ function App(): JSX.Element {
             rehypePlugins={[rehypeRaw]}
             className="markdown-body code-width hi-100 mark-block" // Apply GitHub Markdown CSS styles
             children={Mark}
-            />
+          />
+          <div id='copy-btn' onClick={Copy}><img id='copy-icon' src="copy.png" alt="Copy" /></div>
         </div>
 
       </div>
