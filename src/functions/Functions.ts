@@ -218,4 +218,14 @@ const TABLE = (textar:HTMLTextAreaElement , setMark:React.Dispatch<React.SetStat
   setMark(newStr) ;
 }
 
-export { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE };
+const BREAK = (textar:HTMLTextAreaElement , setMark:React.Dispatch<React.SetStateAction<string>>):void => {
+  // const textar:HTMLTextAreaElement = textState.current;
+  const start:number = textar.selectionStart ;
+  const str:string = textar.value ;
+
+  const newStr = `${str.slice(0,start)}\n\n<br>\n\n${str.slice(start)}` ;
+  textar.value = newStr ;
+  setMark(newStr) ;
+}
+
+export { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE , BREAK };

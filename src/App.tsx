@@ -4,7 +4,7 @@ import gfm from 'remark-gfm';
 import 'github-markdown-css/github-markdown.css';
 import rehypeRaw from "rehype-raw";
 
-import { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE } from './functions/Functions';
+import { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE, BREAK } from './functions/Functions';
 import './App.css'
 
 interface refobj {
@@ -49,6 +49,7 @@ function App(): JSX.Element {
       <button className="btn" onClick={() => IMAGE(textState.current,setMark)}><img className='btn-img' src="./image.svg" alt="I" /> <div className="what">Image</div></button>
       <button className="btn" onClick={() => CHECK(textState.current,setMark)}><img className='btn-img' src="./check.svg" alt="CH" /> <div className="what">Checkbox</div></button>
       <button className="btn" onClick={() => TABLE(textState.current,setMark)}><img className='btn-img' src="./table.svg" alt="T" /> <div className="what">Table</div></button>
+      <button className="btn" onClick={() => BREAK(textState.current,setMark)}>\n<div className="what">Newline</div></button>
       </div>
 
       <div className="wi-100 flex-1 coverbox">
