@@ -226,6 +226,9 @@ const BREAK = (textar:HTMLTextAreaElement , setMark:React.Dispatch<React.SetStat
   const newStr = `${str.slice(0,start)}\n\n<br>\n\n${str.slice(start)}` ;
   textar.value = newStr ;
   setMark(newStr) ;
+  textar.selectionEnd = start + 8;
+  textar.selectionStart = start + 8;
+  textar.focus() 
 }
 
 export { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE , BREAK };
