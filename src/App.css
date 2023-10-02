@@ -96,14 +96,25 @@ button {
 }
 
 #copy-btn {
-    position: absolute;
-    right: 15px;
-    top: 15px;
     color: white;
     cursor: pointer;
+    margin: 0 10px;
 }
 
 #copy-icon {
     filter: invert(100%);
-    height: 25px;
+    height: 30px;
+}
+
+#scroll-lock {
+}
+
+.top-right {
+    top: 0;
+    right: 0;
+}
+
+.floating-optn {
+    margin-top: 0.5rem;
+    margin-right: 0.8rem;
 }

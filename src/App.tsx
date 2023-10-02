@@ -6,6 +6,7 @@ import rehypeRaw from "rehype-raw";
 
 import { BOLD, ITALIC , STRIKE , H1,  OL,  UL,  QUOTE , CODE , LINK , IMAGE , CHECK , TABLE, BREAK } from './functions/Functions';
 import './App.css'
+import Slider from './components/Slider';
 
 interface refobj {
   current: HTMLTextAreaElement
@@ -14,6 +15,8 @@ interface refobj {
 function App(): JSX.Element {
   const textState:refobj = useRef() ;
   const [Mark, setMark] = useState<string>('') ;
+  const [scrollSelect, setscrollSelect] = useState<boolean>(false) ;
+
   useEffect(() => {
     setMark(textState.current.value) ;
   }, [])
@@ -29,9 +32,31 @@ function App(): JSX.Element {
     document.body.removeChild(input);
   }
 
+  const markdownRef = useRef(null);
+
+  const scrollToBottom = () => {
+    if (markdownRef.current) {
+      const scrollContainer = markdownRef.current;
+      scrollContainer.scrollTop = scrollContainer.scrollHeight;
+    }
+  };
+
+  const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setMark(e.target.value) ;
+    if (scrollSelect) {
+      scrollToBottom();
+    }
+  }
+
+  useEffect(()=> {
+    if (scrollSelect){
+      scrollToBottom();
+    }
+  },[scrollSelect])
+
   return (
     <div id="App" className='hi-100'>
-      <div id="nav" className='flex-row bor-r'>
+      <div id="nav" className='flex-row'>
         Markdown Editor 
         <a href="https://github.com/Arghyahub/MarkdownEditor" className="github-src"><img src="github.png" alt="Github" className='github-icon' /> </a> 
       </div>
@@ -54,15 +79,23 @@ function App(): JSX.Element {
 
       <div className="wi-100 flex-1 coverbox">
 
-        <div id="code-block" className="wi-100 bor-r">
-          <textarea ref={textState} placeholder='Write Here' className='code-width hi-100 code-text' onChange={(e) => setMark(e.target.value)}></textarea>
-          <ReactMarkdown
-            remarkPlugins={[gfm]} // Enable GitHub Flavored Markdown (GFM) syntax
-            rehypePlugins={[rehypeRaw]}
-            className="markdown-body code-width hi-100 mark-block" // Apply GitHub Markdown CSS styles
-            children={Mark}
-          />
-          <div id='copy-btn' onClick={Copy}><img id='copy-icon' src="copy.png" alt="Copy" /></div>
+        <div id="code-block" className="wi-100">
+          <textarea ref={textState} placeholder='Write Here' className='code-width hi-100 code-text' onChange={handleTextChange}></textarea>
+          <div
+            ref={markdownRef}
+            className="markdown-body code-width hi-100 mark-block"
+          >
+            <ReactMarkdown
+              remarkPlugins={[gfm]}
+              rehypePlugins={[rehypeRaw]}
+              children={Mark}
+            />
+          </div>
+
+          <div className="abs top-right flex-row jcen acen floating-optn">
+            <Slider scrollSelect={scrollSelect} setscrollSelect={setscrollSelect} />
+            <div id='copy-btn' onClick={Copy}><img id='copy-icon' src="copy.png" alt="Copy" /></div>
+          </div>
         </div>
 
       </div>
